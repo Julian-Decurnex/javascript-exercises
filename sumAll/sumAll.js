@@ -1,12 +1,8 @@
 const sumAll = function(x, y) {
 	let biggerNum = 0
     let smallerNum = 0
-    if (x < 0 || y < 0) {
-        return 'ERROR'
-    } else if (typeof x !== 'number' || typeof y !== 'number') {
-        return 'ERROR'
-    } else {
-    	if (x > y) {
+    if (typeof x === 'number' && typeof y === 'number' && x < 0 && y < 0) {
+        if (x > y) {
     		biggerNum = x
             smallerNum = y
         } else {
@@ -18,6 +14,8 @@ const sumAll = function(x, y) {
             resultado += i
         }
         return resultado
+    } else {
+    	return 'ERROR'
     }
 };
 
