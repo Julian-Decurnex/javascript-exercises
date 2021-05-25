@@ -1,22 +1,23 @@
 const findTheOldest = function(array) {
-	const año = new Date().toString().slice(11, -47)
-    let theOldest = array[0];
-	const getAge = (object) => {
-		let edad = 0
+    const getAge = (object) => {
+        const año = new Date().toString().slice(11, -47);
+        let edad = 0;
         if (object.yearOfDeath) {
-            edad = object.yearOfDeath - object.yearOfBirth
-        } else {
-            edad = año - object.yearOfBirth
+            edad = (object.yearOfDeath - object.yearOfBirth);
+        } else if (object.yearOfDeath === undefined){
+            edad = (año - object.yearOfBirth);
         }
         return edad
     }
-    
+    let theOldest = array[0];
     for (let i=0; i<array.length; i++) {
         if (getAge(array[i]) > getAge(theOldest)) {
-        	theOldest = array[i]
+            theOldest = array[i];
         }
     }
-    return theOldest.name
+return theOldest
 };
+
+//POR ALGUNA RAZON NO FUNCIONA CON EL JEST Y DA RESULTADO ERRONEO, YA LO PROBE EN JS.DO Y DA PERFECTO
 
 module.exports = findTheOldest;
